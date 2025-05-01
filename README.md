@@ -1,4 +1,4 @@
-<h2><a href="https://arxiv.org/abs/2412.09078">Forest-of-Thought: Scaling Test-Time Compute for Enhancing LLM Reasoning</a></h2>
+<h2>ICML 2025 <a href="https://arxiv.org/abs/2412.09078">Forest-of-Thought: Scaling Test-Time Compute for Enhancing LLM Reasoning</a></h2>
 
 ## Abstract
 
