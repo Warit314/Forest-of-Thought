@@ -1,0 +1,270 @@
+<!DOCTYPE html><html><head>
+      <title>workflow_detailed</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////Users/admin/.antigravity/extensions/shd101wyy.markdown-preview-enhanced-0.8.20-universal/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      <script type="text/javascript" src="file:////Users/admin/.antigravity/extensions/shd101wyy.markdown-preview-enhanced-0.8.20-universal/crossnote/dependencies/mermaid/mermaid.min.js" charset="UTF-8"></script>
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="forest-of-thought-detailed-workflow">Forest-of-Thought: Detailed Workflow </h1>
+<p>This document traces the complete execution flow of the MCTS algorithm, showing each step, function call, file location, and the exact prompts sent to the LLM.</p>
+<hr>
+<h2 id="overview">Overview </h2>
+<div class="mermaid">graph TD
+    A[Load Dataset] --&gt; B[Start Forest Loop&lt;br&gt;Tree i=0..N]
+    B --&gt; C{Is First Tree?}
+    C --&gt;|Yes| D[Use Original Question]
+    C --&gt;|No| E[Select Similar Example]
+    E --&gt; F[Inject Example into Prompt]
+    D --&gt; G[Generate Weak Answer]
+    F --&gt; G
+    G --&gt; H[MCTS Loop&lt;br&gt;Max Iterations]
+    subgraph MCTS_Algorithm
+        H --&gt; M1[Select Best Node UCB]
+        M1 --&gt; M2[Generate Hint/Critique]
+        M2 --&gt; M3[Generate/Refine Answer]
+        M3 --&gt; M4[Calculate Reward&lt;br&gt;LLM Judge]
+        M4 --&gt; M5[Update UCB Bank&lt;br&gt;Score+Visits]
+        M5 --&gt; H
+    end
+    H --&gt;|Max Iter Reached| I[Result for Tree i]
+    I --&gt; B
+    B --&gt;|Loop Done| J[Aggregate Results&lt;br&gt;Self-Consistency]
+    J --&gt; K[Final Answer Verification]
+</div><hr>
+<h2 id="step-by-step-execution">Step-by-Step Execution </h2>
+<h3 id="step-1-load-dataset"><strong>Step 1: Load Dataset</strong> </h3>
+<p><strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Line ~628)</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>dataset <span class="token operator">=</span> mcts_load_data<span class="token punctuation">(</span>args<span class="token punctuation">)</span>
+<span class="token comment"># Loads: datasets/gsm8k/test.parquet</span>
+</code></pre><p><strong>Example Problem</strong>:</p>
+<pre data-role="codeBlock" data-info="json" class="language-json json"><code><span class="token punctuation">{</span>
+  <span class="token property">"question"</span><span class="token operator">:</span> <span class="token string">"Janet's ducks lay 16 eggs per day..."</span><span class="token punctuation">,</span>
+  <span class="token property">"answer"</span><span class="token operator">:</span> <span class="token string">"#### 18"</span>
+<span class="token punctuation">}</span>
+</code></pre><hr>
+<h3 id="step-2-the-forest-loop-input-diversity"><strong>Step 2: The Forest Loop (Input Diversity)</strong> </h3>
+<p><strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Inside [run](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py#249-311) method of [Monte_Carlo_Forest](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf_stop_noearly.py#314-600), Lines ~355-365)</p>
+<p>The system runs <strong>multiple trees</strong> (<code>tree_nums</code>, e.g., 5) for the <em>same</em> problem to explore different reasoning paths.</p>
+<ol>
+<li><strong>Tree 0</strong>: Uses the original question only.</li>
+<li><strong>Tree 1+</strong>: Injects a "similar" solved example from the bank to guide the model's reasoning style (Input Diversity).</li>
+</ol>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># run_with_mcf.py</span>
+<span class="token keyword keyword-for">for</span> t <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>tree_nums<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-if">if</span> t <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token comment"># Find closest example from utils/examples.py</span>
+        <span class="token comment"># Uses TF-IDF + Cosine Similarity</span>
+        <span class="token keyword keyword-case">case</span> <span class="token operator">=</span> self<span class="token punctuation">.</span>learning_cases<span class="token punctuation">[</span>query_index<span class="token punctuation">]</span> 
+        <span class="token comment"># Modifies prompt: "Question: [Example] Answer: [Example] ... Question: [Target]"</span>
+        query <span class="token operator">=</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> 
+    
+    <span class="token comment"># Run independent MCTS for this tree</span>
+    monte_carlo_tree<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+</code></pre><p><strong>Helper Function</strong>: [get_similarity_question](file:///Users/admin/Documents/Forest-of-Thought/utils/examples.py#217-234)<br>
+<strong>File</strong>: [utils/examples.py](file:///Users/admin/Documents/Forest-of-Thought/utils/examples.py) (Lines 217-234)</p>
+<ul>
+<li><strong>Logic</strong>: Uses TF-IDF and Cosine Similarity to find the "closest" example in the bank.</li>
+<li><strong>Key Behavior</strong>: Even if no good match exists, it <em>always</em> returns the mathematical nearest neighbor to ensure the prompt is perturbed, adding diversity.</li>
+</ul>
+<hr>
+<h3 id="step-3-generate-initial-weak-answer"><strong>Step 3: Generate Initial "Weak" Answer</strong> </h3>
+<p><strong>Function</strong>: [get_weak_answer()](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py#62-68)<br>
+<strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Lines 64-67)</p>
+<p><strong>Prompt Sent to LLM</strong>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Question: Janet's ducks lay 16 eggs per day...
+
+The response should begin with [reasoning process]...[Verification]... and end with "[Final Answer] The answer is [answer] 
+#### [answer]"
+
+Let's think step by step.
+</code></pre><p><strong>LLM Response (Example)</strong>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>[reasoning process]
+Janet starts with 16 eggs...
+9 × $2 = $18
+
+[Verification]
+9 × 2 = 18 ✓
+
+[Final Answer] The answer is 18
+#### 18
+</code></pre><p><strong>Score</strong>: [cal_reward()](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf_stop_noearly.py#35-50) is called immediately after to score this initial node (see Step 4.4).</p>
+<hr>
+<h3 id="step-4-mcts-iteration-loop"><strong>Step 4: MCTS Iteration Loop</strong> </h3>
+<p><strong>Function</strong>: [monte_carlo_tree](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf_stop_noearly.py#223-313)<br>
+<strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Lines ~130-180)</p>
+<p><strong>For each iteration</strong> (0 to <code>max_iter-1</code>):</p>
+<h4 id="41-selection---pick-best-node-using-ucb"><strong>4.1: Selection</strong> - Pick Best Node Using UCB </h4>
+<p><strong>Function</strong>: [get_best_explore_from_ucb()](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py#89-101)<br>
+<strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Lines ~388-406, defined outside class or as helper)</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># Calculate UCB for each node:</span>
+UCB <span class="token operator">=</span> reward <span class="token operator">+</span> <span class="token number">1.4</span> × √<span class="token punctuation">(</span>log<span class="token punctuation">(</span>parent_visits<span class="token punctuation">)</span> <span class="token operator">/</span> node_visits<span class="token punctuation">)</span>
+<span class="token comment"># Balances exploitation (high reward) and exploration (low visits)</span>
+<span class="token comment"># Returns: The best node to expand</span>
+</code></pre><h4 id="42-generate-hintcritique"><strong>4.2: Generate Hint/Critique</strong> </h4>
+<p><strong>Function</strong>: [get_weak_hints()](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py#69-72)<br>
+<strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Lines 55-57)</p>
+<p><strong>Prompt Sent to LLM</strong>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Question: [Question]
+Answer: [Selected Answer]
+
+Since we have a weak Answer, could you provide me with a reflection or feedback to correct this answer better? Analyze this Answer Strictly and Critic, point out every flaw for every possible imperfect to minus every possible score!
+
+Let's think step by step.
+</code></pre><p><strong>LLM Response (Hint)</strong>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>The calculation looks correct, but let me verify each step more carefully...
+</code></pre><h4 id="43-generate-better-answer"><strong>4.3: Generate Better Answer</strong> </h4>
+<p><strong>Function</strong>: [get_better_answer()](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf_stop_noearly.py#59-62)<br>
+<strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Lines 59-61)</p>
+<p><strong>Prompt Sent to LLM</strong> (includes conversation history with hint):</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>[Previous conversation history including the hint above]
+
+Question: [Question]
+
+Please refine your answer according to your Reflection or Feedback. The response should begin with [reasoning process]...[Verification]...
+
+Let's think step by step.
+</code></pre><p><strong>LLM Response (Refined Answer)</strong>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>[reasoning process]
+Let me solve this step-by-step with clear order of operations...
+[Final Answer] The answer is 18
+#### 18
+</code></pre><h4 id="44-calculate-reward-score"><strong>4.4: Calculate Reward Score</strong> </h4>
+<p><strong>Function</strong>: [cal_reward()](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf_stop_noearly.py#35-50)<br>
+<strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Lines 35-49)</p>
+<p><strong>Prompt Sent to LLM</strong>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>Question: [Question]
+Answer: [Refined Answer]
+
+Analyze this Answer Strictly and Critic...
+Output a score between [0,100], i.e. from 0 to 100.
+</code></pre><p><strong>LLM Response</strong>: <code>[Analyst]...[Score] 95/100</code> -&gt; Extracted as <strong>95</strong></p>
+<h4 id="45-update-ucb-values"><strong>4.5: Update UCB Values</strong> </h4>
+<p><strong>Function</strong>: [update_ucb()](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py#105-143)<br>
+<strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Lines ~408-433)</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># Update visits and rewards for the node and its ancestors</span>
+<span class="token comment"># Recalculate UCB scores for future selections</span>
+</code></pre><hr>
+<h3 id="step-5-select-best-answer-from-tree"><strong>Step 5: Select Best Answer from Tree</strong> </h3>
+<p><strong>Function</strong>: [get_tree_ans](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf_stop_noearly.py#212-222) / Weighted Score Logic<br>
+<strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Lines 212-221)</p>
+<p>After the loop, the absolute best answer <em>for this specific tree</em> is selected.</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># Weighted Score = 0.5*MinReward + 0.3*Visits + 0.2*UCB</span>
+best_answer <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>answers_list<span class="token punctuation">,</span> key<span class="token operator">=</span>weighted_score<span class="token punctuation">)</span>
+</code></pre><hr>
+<h3 id="step-6-aggregate-results-forest-level"><strong>Step 6: Aggregate Results (Forest Level)</strong> </h3>
+<p><strong>File</strong>: [run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py) (Inside <code>monte_carlo_forest.run</code> loop)</p>
+<p>After running all <code>tree_nums</code> trees, the code collects all [tree_ans](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf_stop_noearly.py#212-222) (best answer from each tree).</p>
+<ul>
+<li><em>Note: In the provided code, <code>is_correct</code> logic seems to check each tree individually, but a robust Forest implementation would typically take a majority vote here.</em></li>
+</ul>
+<hr>
+<h3 id="step-7-verify-correctness"><strong>Step 7: Verify Correctness</strong> </h3>
+<p><strong>Function</strong>: [check()](file:///Users/admin/Documents/Forest-of-Thought/utils/utils.py#241-303)<br>
+<strong>File</strong>: [utils/utils.py](file:///Users/admin/Documents/Forest-of-Thought/utils/utils.py) (Lines 238-300)</p>
+<p><strong>Logic</strong>:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># Extract and compare canonical answers</span>
+<span class="token keyword keyword-if">if</span> extract_label<span class="token punctuation">(</span>answer<span class="token punctuation">)</span> <span class="token operator">==</span> extract_label<span class="token punctuation">(</span>ground_truth<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-return">return</span> <span class="token boolean">True</span>
+</code></pre><p><strong>Console Output</strong>:</p>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>18 18
+correct_num=1, current_num=1
+</code></pre><hr>
+<h2 id="summary-table-of-key-files">Summary Table of Key Files </h2>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>File</th>
+<th>Key Functions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Main Logic</strong></td>
+<td>[run_with_mcf.py](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py)</td>
+<td><code>Monte_Carlo_Forest.run</code>, [monte_carlo_tree](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf_stop_noearly.py#223-313), [step](file:///Users/admin/Documents/Forest-of-Thought/run_with_mcf.py#144-148)</td>
+</tr>
+<tr>
+<td><strong>Diversity</strong></td>
+<td>[utils/examples.py](file:///Users/admin/Documents/Forest-of-Thought/utils/examples.py)</td>
+<td>[get_similarity_question](file:///Users/admin/Documents/Forest-of-Thought/utils/examples.py#217-234), [get_examples](file:///Users/admin/Documents/Forest-of-Thought/utils/examples.py#8-215)</td>
+</tr>
+<tr>
+<td><strong>Model API</strong></td>
+<td>[models/load_local_model.py](file:///Users/admin/Documents/Forest-of-Thought/models/load_local_model.py)</td>
+<td>[get_respond](file:///Users/admin/Documents/Forest-of-Thought/models/load_local_model.py#70-124), [get_respond_ollama](file:///Users/admin/Documents/Forest-of-Thought/models/load_local_model.py#125-167)</td>
+</tr>
+<tr>
+<td><strong>Utility</strong></td>
+<td>[utils/utils.py](file:///Users/admin/Documents/Forest-of-Thought/utils/utils.py)</td>
+<td>[check](file:///Users/admin/Documents/Forest-of-Thought/utils/utils.py#241-303), [extract_label](file:///Users/admin/Documents/Forest-of-Thought/utils/utils.py#202-229)</td>
+</tr>
+</tbody>
+</table>
+
+      </div>
+      
+      
+    
+    
+    <script type="module">
+// TODO: If ZenUML gets integrated into mermaid in the future,
+//      we can remove the following lines.
+
+
+var MERMAID_CONFIG = ({"startOnLoad":false});
+if (typeof MERMAID_CONFIG !== 'undefined') {
+  MERMAID_CONFIG.startOnLoad = false
+  MERMAID_CONFIG.cloneCssStyles = false
+  MERMAID_CONFIG.theme = "default"
+}
+
+mermaid.initialize(MERMAID_CONFIG || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidetransitionend', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+} else {
+  await mermaid.run({
+    nodes: document.querySelectorAll('.mermaid')
+  })
+}
+</script>
+    
+    
+    
+  
+    </body></html>

@@ -1,6 +1,11 @@
 import time
 import os
-import moxing as mox
+import time
+import os
+try:
+    import moxing as mox
+except ImportError:
+    mox = None
 import argparse
 import shutil
 import torch
@@ -8,14 +13,17 @@ os.environ['MKL_SERVICE_FORCE_INTEL'] = '1'
 
 import numpy as np
 
-os.system("pip install datasets")
-os.system("pip install accelerate")
-os.system("pip install pylatexenc")
-os.system("pip install graphviz")
-os.system("pip install transformers==4.41.2")
-os.system("export PYTHONPATH={new_directory}:$PYTHONPATH")
+# Only install if needed or requested - commented out to prevent auto-install on every run
+# os.system("pip install datasets")
+# os.system("pip install accelerate")
+# os.system("pip install pylatexenc")
+# os.system("pip install graphviz")
+# os.system("pip install transformers==4.41.2")
+# os.system("export PYTHONPATH={new_directory}:$PYTHONPATH")
 
-os.system("nvidia-smi")
+if torch.cuda.is_available():
+    os.system("nvidia-smi")
+
 def parse_args():
     parser = argparse.ArgumentParser('run')
     parser.add_argument("--tree_nums", type=int, default=2, help="")
@@ -24,6 +32,7 @@ def parse_args():
     parser.add_argument("--dataset_filepath", type=str, default='./datasets/gsm8k/test.parquet')
     parser.add_argument("--max_iter", type=int, default=1, help="Number of simulations per tree")
     parser.add_argument("--s3_model_path", type=str, default="s3://bucket-4031/bizhenni/projects/chain_of_thought/ckpt/ckpt/mistral-7b-instruct-v0.3")
+    # For Ollama, model_type should be 'ollama' and s3_model_path (or model_path) should be the ollama model name (e.g. 'llama3')
     parser.add_argument("--model_type", type=str, default="llama")
     parser.add_argument("--level", type=int, default=1)
     parser.add_argument("--stop", choices=["cgdm", "random", "scaling", "majority", "score"], default="cgdm")
@@ -32,7 +41,7 @@ def parse_args():
     parser.add_argument("--correct_threshold",  type=float, default=-1, help="")
     parser.add_argument('--base_mode', type=str, choices=['cot', 'tot', 'mcts'], default='mcts')
     parser.add_argument("--start_id", type=int, default=0, help="")
-    parser.add_argument("--end_id", type=int, default=-1, help="")
+    parser.add_argument("--end_id", type=int, default=100, help="")
     parser.add_argument("--outputs", type=str, default='')
 
     args, _ = parser.parse_known_args()
@@ -41,10 +50,21 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
 
-    new_directory = "/home/ma-user/modelarts/user-job-dir/forest-of-thought"
-    os.chdir(new_directory)
-    mox.file.copy_parallel(args.s3_model_path, f'{new_directory}/ckpt/model')
+    # Detect if running locally (not on ModelArts/Cloud)
+    # The original code hardcoded a path. We'll use current directory if mox is missing.
+    if mox is None:
+        new_directory = os.getcwd()
+    else:
+        new_directory = "/home/ma-user/modelarts/user-job-dir/forest-of-thought"
+        os.chdir(new_directory)
+        mox.file.copy_parallel(args.s3_model_path, f'{new_directory}/ckpt/model')
+
     print("torch.cuda.is_available()", torch.cuda.is_available())
+    
+    # Check for MPS
+    if torch.backends.mps.is_available():
+        print("MPS (Metal Performance Shaders) is available on macOS.")
+    
     if torch.cuda.is_available():
         device_count = torch.cuda.device_count()
         if device_count > 1:
@@ -54,14 +74,19 @@ if __name__ == '__main__':
         else:
             os.system(f"export CUDA_VISIBLE_DEVICES=0")
 
-    cmd_dict = {
-        'game24': f'cd {new_directory}/scripts/game24/;python run.py --prompt_sample standard --method_generate propose --tree_num {args.tree_nums} --n_select_sample 5 --correction --model_path {new_directory}/ckpt/model',
-        'gsm8k': f'cd {new_directory};python run_with_mcf.py --dataset  gsm8k-new-mcts- --dataset_filepath datasets/gsm8k/test.parquet --tree_nums {args.tree_nums} --max_iter {args.max_iter} --model_path {new_directory}/ckpt/model --stop scaling' ,
-        'aime': f'cd {new_directory};python run_with_mcf.py --dataset  aime-new-mcts- --dataset_filepath datasets/aime2024/aime_2024_problems.parquet --tree_nums {args.tree_nums} --max_iter {args.max_iter} --model_path {new_directory}/ckpt/model --stop scaling' ,
-        'math500': f'cd {new_directory};python run_with_mcf.py --dataset  math-500-new-mcts- --dataset_filepath datasets/math500/test.parquet --tree_nums {args.tree_nums} --max_iter {args.max_iter} --model_path {new_directory}/ckpt/model --stop scaling' ,
-        'math500_sample': f'cd {new_directory};python run_with_mcf.py --dataset  math-500-sample-mcts- --dataset_filepath datasets/math500/test.parquet --tree_nums {args.tree_nums} --max_iter {args.max_iter} --model_path {new_directory}/ckpt/model --stop scaling --start_id {args.start_id} --end_id {args.end_id}' ,
+    # If using Ollama, we can just pass the model name (e.g. from s3_model_path argument or a new one) as model_path
+    # For compatibility, if args.model_type is "ollama", we assume args.s3_model_path holds the ollama model name.
+    
+    model_path_arg = f'{new_directory}/ckpt/model' if mox is not None else args.s3_model_path
 
-        'debug': f'cd {new_directory}',
+    cmd_dict = {
+        'game24': f'cd {new_directory}/scripts/game24/;python3 run.py --prompt_sample standard --method_generate propose --tree_num {args.tree_nums} --n_select_sample 5 --correction --model_path {model_path_arg}',
+        'gsm8k': f'python3 run_with_mcf.py --dataset  gsm8k-new-mcts- --dataset_filepath datasets/gsm8k/test.parquet --tree_nums {args.tree_nums} --max_iter {args.max_iter} --model_path "{model_path_arg}" --model_type {args.model_type} --stop scaling --end_id {args.end_id}' ,
+        'aime': f'python3 run_with_mcf.py --dataset  aime-new-mcts- --dataset_filepath datasets/aime2024/aime_2024_problems.parquet --tree_nums {args.tree_nums} --max_iter {args.max_iter} --model_path "{model_path_arg}" --model_type {args.model_type} --stop scaling --end_id {args.end_id}' ,
+        'math500': f'python3 run_with_mcf.py --dataset  math-500-new-mcts- --dataset_filepath datasets/math500/test.parquet --tree_nums {args.tree_nums} --max_iter {args.max_iter} --model_path "{model_path_arg}" --model_type {args.model_type} --stop scaling --end_id {args.end_id}' ,
+        'math500_sample': f'python3 run_with_mcf.py --dataset  math-500-sample-mcts- --dataset_filepath datasets/math500/test.parquet --tree_nums {args.tree_nums} --max_iter {args.max_iter} --model_path "{model_path_arg}" --model_type {args.model_type} --stop scaling --start_id {args.start_id} --end_id {args.end_id}' ,
+
+        'debug': f'echo "Debug mode: {new_directory}"',
     }
 
     print(cmd_dict[args.mode])

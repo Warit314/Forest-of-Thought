@@ -49,8 +49,11 @@ def mcts_load_data(args):
 
     if 'math' in data_name and 'level' in data_name:
         dataset = dataset.filter(lambda example: example["level"].endswith(str(args.level)))
-    if 'sample' in data_name:
-        dataset = dataset.select(range(args.start_id, args.end_id))
+    if 'sample' in data_name or args.end_id > 0:
+        if args.end_id > 0:
+             dataset = dataset.select(range(args.start_id, min(args.end_id, len(dataset))))
+        else:
+             dataset = dataset.select(range(args.start_id, args.end_id))
     return dataset
 
 def get_query_gt_list(example, data_name):

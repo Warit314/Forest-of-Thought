@@ -1,0 +1,35 @@
+digraph Game24_Tree_0 {
+	rankdir=TB
+	node [color=lightblue fontname=Helvetica shape=box style=filled]
+	root_0 [label="Start: 4 5 6 10" fillcolor=lightgrey]
+	node_0 [label="4 5 6 10" fillcolor=white]
+	node_0 [fillcolor=lightgrey]
+	node_1 [label="4 + 5 = 9 (left: 6 10 9)" fillcolor=white]
+	node_0 -> node_1
+	node_2 [label="10 - 4 = 6 (left: 6 5 6)" fillcolor=white]
+	node_0 -> node_2
+	node_2 [color=green penwidth=2.0]
+	node_3 [label="5 - 6 = -1 (left: -1 4 10)" fillcolor=white]
+	node_0 -> node_3
+	node_3 [color=green penwidth=2.0]
+	node_4 [label="4 * 6 = 24 (left: 24 5 10)" fillcolor=white]
+	node_0 -> node_4
+	node_5 [label="10 / 5 = 2 (left: 2 4 6)" fillcolor=white]
+	node_0 -> node_5
+	node_5 [color=green penwidth=2.0]
+	node_6 [label="4 - 10 = -6 (left: -6 5 6)" fillcolor=white]
+	node_0 -> node_6
+	node_6 [color=green penwidth=2.0]
+	node_7 [label="5 - 4 = 1 (left: 1 6 10)" fillcolor=white]
+	node_0 -> node_7
+	node_7 [color=green penwidth=2.0]
+	node_8 [label="10 - 5 = 5 (left: 5 4 6)" fillcolor=white]
+	node_0 -> node_8
+	node_9 [label="4 - 10 = -6 (left: -6 5 6) 5 * 6 = 30
+(left: 30 -6) 30.0 + -6.0 = 24" fillcolor=white]
+	node_6 -> node_9
+	node_9 [color=green penwidth=2.0]
+	node_10 [label="10 - 4 = 6 (left: 6 5 6) 5 * 6 = 30
+(left: 30 6) 30.0 - 6.0 = 24" fillcolor=white]
+	node_2 -> node_10
+}

@@ -1,0 +1,78 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Debug run.py (GSM8K + Ollama)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/run.py",
+            "args": [
+                "--mode", "gsm8k",
+                "--model_type", "ollama",
+                "--s3_model_path", "llama3",
+                "--max_iter", "2",
+                "--tree_nums", "5"
+            ],
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/venv/bin/python",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug run.py (Game24 + Ollama)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/run.py",
+            "args": [
+                "--mode", "game24",
+                "--model_type", "ollama",
+                "--s3_model_path", "llama3",
+                "--max_iter", "2",
+                "--tree_nums", "5"
+            ],
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/venv/bin/python",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug run_with_mcf.py (GSM8K)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/run_with_mcf.py",
+            "args": [
+                "--dataset", "gsm8k-new-mcts-",
+                "--dataset_filepath", "datasets/gsm8k/test.parquet",
+                "--model_path", "llama3",
+                "--model_type", "ollama",
+                "--max_iter", "1",
+                "--tree_nums", "1"
+            ],
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/venv/bin/python",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug Visualizer",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/utils/visualize_mcts.py",
+            "args": [
+                "logs/game24/fot/llama3_8b_0.7_naive_standard_sample_1_start0_end97_tree16.json",
+                "--output_dir", "visualizations",
+                "--max_trees", "5"
+            ],
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/venv/bin/python",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "python": "${workspaceFolder}/venv/bin/python",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

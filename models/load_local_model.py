@@ -1,3 +1,5 @@
+import requests
+import json
 import transformers
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
@@ -17,7 +19,10 @@ class Pipeline:
         self.correction = correction
         self.correct_threshold = correct_threshold
         self.task = task
-        if 'qwen' in self.model_name.lower():
+        
+        if model_type == 'ollama':
+            self.model_type = 'ollama'
+        elif 'qwen' in self.model_name.lower():
             self.model_type = 'qwen'
         elif 'llama' in self.model_name.lower():
             self.model_type = 'llama'
@@ -27,7 +32,20 @@ class Pipeline:
             self.model_type = 'deepseek'
         else:
             self.model_type = model_type
-        if self.model_type == 'mistral' or self.task== 'game24':
+
+        # Device selection
+        if torch.cuda.is_available():
+            self.device = "cuda"
+        elif torch.backends.mps.is_available():
+            self.device = "mps"
+        else:
+            self.device = "cpu"
+        print(f"Using device: {self.device}")
+
+        if self.model_type == 'ollama':
+            # No need to load HF model for Ollama
+            pass
+        elif self.model_type == 'mistral' or self.task== 'game24':
             self.pipeline = transformers.pipeline(
                 "text-generation",
                 model=self.model_id,
@@ -42,7 +60,7 @@ class Pipeline:
                 torch_dtype=torch.bfloat16,
                 low_cpu_mem_usage=True,
                 trust_remote_code=True,
-                device_map='auto',
+                device_map=self.device,
             ).eval()
 
         self.infer_times = 0
@@ -101,6 +119,51 @@ class Pipeline:
                 return self.get_respond_deepseek(messages, max_length)
             elif 'HK-O1aw' == self.model_type:
                 return self.get_respond_HK_O1aw(messages, max_length)
+            elif 'ollama' == self.model_type:
+                return self.get_respond_ollama(messages, max_length)
+
+    def get_respond_ollama(self, messages, max_length=1024):
+        # Assuming messages is a list of dicts: [{"role": "user", "content": "..."}]
+        # Ollama API expects 'prompt' for /api/generate or 'messages' for /api/chat
+        # We'll use /api/chat.
+        
+        url = "http://localhost:11434/api/chat"
+        
+        # Ensure messages are in correct format
+        if not isinstance(messages, list):
+             # If it's a string, likely just a prompt
+             messages = [{"role": "user", "content": messages}]
+        
+        payload = {
+            "model": self.model_id, # e.g. "llama3"
+            "messages": messages,
+            "stream": False,
+            "options": {
+                "num_predict": max_length,
+                "temperature": 0.7 # Default temp
+            }
+        }
+        
+        start_time = time.time()
+        try:
+            response = requests.post(url, json=payload)
+            response.raise_for_status()
+            data = response.json()
+            content = data.get("message", {}).get("content", "")
+            
+            # Simple confidence placeholder as Ollama doesn't return logprobs by default easily without raw mode
+            # If we need logprobs/confidence, it's more complex with default Ollama API.
+            # Returning 0 as dummy confidence for now.
+            average_confidence = 0 
+            
+        except Exception as e:
+            print(f"Ollama API Error: {e}")
+            return "", -10
+            
+        end_time = time.time()
+        # approximate tokens (words / 0.75) or just ignore tokens_per_second for now
+        
+        return content, average_confidence
 
     def get_respond_llama(self, messages, max_new_tokens=1024):
         inputs = self.tokenizer.apply_chat_template(messages,
